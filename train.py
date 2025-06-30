@@ -15,7 +15,7 @@ callbacks = [
     get_tensorboard_callback()
 ]
 
-model.train(
+model.fit(
     augment(x_train), y_train,
     validation_split = 0.1,
     epoch = 100,
