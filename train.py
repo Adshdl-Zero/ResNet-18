@@ -6,11 +6,9 @@ from utils.callbacks import cosine_decay_scheduler, get_tensorboard_callback
 (x_train, y_train), (x_test, y_test), augment = load_cifar()
 
 model = res_net()
-
-model.compile(optamizer =  tf.keras.optimizers.Adam(learning_rate=0.1),
-              loss = 'spase_categorical_crossentropy',
-              metrics = ['accuracy']
-              )
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.1),
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
 
 callbacks = [
     cosine_decay_scheduler(100, 0.1),
