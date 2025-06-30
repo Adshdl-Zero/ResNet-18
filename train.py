@@ -18,7 +18,7 @@ callbacks = [
 model.fit(
     augment(x_train), y_train,
     validation_split = 0.1,
-    epoch = 100,
+    epochs = 100,
     batch_size = 128,
     callbacks = callbacks
 )
