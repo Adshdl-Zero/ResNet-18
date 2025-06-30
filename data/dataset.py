@@ -8,9 +8,9 @@ def load_cifar():
   x_test = x_test.astype('float32') / 255.
 
   data_augmentation = tf.keras.Sequential([
-    layers.experimental.preprocessing.RandomFlip('horizontal'),
-    layers.experimental.preprocessing.RandomRotation(0.1),
-    layers.experimental.preprocessing.RandomZoom(0.1)
+    layers.RandomFlip('horizontal'),
+    layers.RandomRotation(0.1),
+    layers.RandomZoom(0.1)
   ])
 
   return (x_train, y_train), (x_test, y_test), data_augmentation
