@@ -2,23 +2,23 @@
 import tensorflow as tf
 from tensorflow import keras
 
-def residual_block(x, filter, stride = 1, use_projection = False):
+def residual_block(x, filter, stride = 1, use_projection = False, weight_decay = 1e-4):
   shortcut = x
-  x = keras.layers.Conv2D(filter, (3,3), strides = stride, padding = 'same', use_bias = False)(x)
+  x = keras.layers.Conv2D(filter, (3,3), strides = stride, padding = 'same', use_bias = False, kernel_regularizer=keras.regularizers.l2(weight_decay))(x)
   x = keras.layers.BatchNormalization()(x)
   x = keras.layers.ReLU()(x)
-  x = keras.layers.Conv2D(filter, (3,3), strides = 1, padding = 'same', use_bias = False)(x)
+  x = keras.layers.Conv2D(filter, (3,3), strides = 1, padding = 'same', use_bias = False, kernel_regularizer=keras.regularizers.l2(weight_decay))(x)
   x = keras.layers.BatchNormalization()(x)
   if use_projection:
-    shortcut = keras.layers.Conv2D(filter, (1,1), strides = stride, padding = 'same', use_bias = False)(shortcut)
+    shortcut = keras.layers.Conv2D(filter, (1,1), strides = stride, padding = 'same', use_bias = False, kernel_regularizer=keras.regularizers.l2(weight_decay))(shortcut)
     shortcut = keras.layers.BatchNormalization()(shortcut)
   x = keras.layers.Add()([x, shortcut])
   x = keras.layers.ReLU()(x)
   return x
 
-def res_net(input_shape = (32, 32, 3), num_classes = 10):
+def res_net(input_shape = (32, 32, 3), num_classes = 10, weight_decay = 1e-4):
   inputs = keras.layers.Input(shape = input_shape)
-  x = keras.layers.Conv2D(64, (3, 3), strides = 1, padding = 'same', use_bias = False)(inputs)
+  x = keras.layers.Conv2D(64, (3, 3), strides = 1, padding = 'same', use_bias = False, kernel_regularizer=keras.regularizers.l2(weight_decay))(inputs)
   x = keras.layers.BatchNormalization()(x)
   x = keras.layers.ReLU()(x)
 
