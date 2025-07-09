@@ -16,7 +16,7 @@ val_ds = tf.data.Dataset.from_tensor_slices((x_val, y_val)).batch(64).prefetch(t
 
 model = res_net()
 lr = 0.1
-no_of_epochs = 100
+no_of_epochs = 120
 mom = 0.9
 model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=lr, momentum=mom, nesterov=True),
               loss=tf.keras.losses.SparseCategoricalCrossentropy(),

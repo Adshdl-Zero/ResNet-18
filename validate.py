@@ -1,7 +1,7 @@
 import tensorflow as tf
 from data.dataset import load_cifar
 
-model = tf.keras.models.load_model('resnet18_cifar10.h5')
+model = tf.keras.models.load_model('resnet18_cifar10.keras')
 
 (_, _), (x_test, y_test), _ = load_cifar()
 
