@@ -19,7 +19,7 @@ lr = 0.1
 no_of_epochs = 100
 mom = 0.9
 model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=lr, momentum=mom, nesterov=True),
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(label_smoothing=0.1),
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(),
               metrics=['accuracy'])
 
 callbacks = [
@@ -34,4 +34,4 @@ model.fit(
     callbacks=callbacks
 )
 
-model.save('resnet18_cifar10.h5')
+model.save('resnet18_cifar10.keras')
