@@ -3,6 +3,7 @@
 Trained a ResNet-18-like convolutional neural network on the CIFAR-10 dataset to classify 32x32 images into 10 object categories with high accuracy.
 
 **📊 Test Accuracy**: **90.44%**
+
 **📘 Original Paper Accuracy**: **~91.25%**
 
 ---
